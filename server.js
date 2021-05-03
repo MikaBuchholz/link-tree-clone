@@ -7,7 +7,9 @@ const PORT = process.env.PORT || 5002;
 
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://Mika:Joav123@cluster0.ilfvm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+
+//removed password for commit
+mongoose.connect(mongooseLink, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 
 db.on('error', console.error.bind(console, 'connection error:'));
