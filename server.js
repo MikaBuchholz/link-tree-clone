@@ -1,15 +1,18 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-
 const PORT = process.env.PORT || 5002;
 
 app.use(express.json())
 
 
 //removed password for commit
-mongoose.connect(mongooseLink, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.url, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 
 db.on('error', console.error.bind(console, 'connection error:'));
