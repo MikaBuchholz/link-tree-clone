@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="client.js"></script>
+    <title>Link Tree Clone</title>
+</head>
+<h1>Link Tree Clone</h1>
+<body>
+    <div class = "input-box">
+        <input id =  "username-input" class = "username-input" type="text" placeholder = "Username...">
+    </div>
+    <div class = "button-container" id = "button-container">
+        <button class = "use-button" id = "use-button">Use</button>
+    </div>
+    <div class = "display-name" id = "display-name">
+        <p id = "name-tag" class = "name-tag"></p>
+    </div>
+    <div class = "link-input-box">
+        <input id =  "link-input" class = "link-input" type="text" placeholder = "Link e.g. twitter.com">
+    </div>
+    <div class = "button-container" id = "button-container">
+        <button class = "add-button" id = "add-button" onclick="checkIfURL()">Add</button>
+    </div>
+    <div class = "display-status" id = "display-status">
+        <p id = "status-tag" class = "status-tag"></p>
+    </div>
+
+    <section class = "link-list-container" id = "link-list-container">
+    </section>
+    <div class = "save-button-container" id = "save-button-container">
+        <button class = "save-button" id = "save-button" onclick="sendData()">Save</button>
+    </div>
+    <div class = "confirm-save-container">
+        <p class = "confirm-tag" id = "confirm-tag"></p>
+    </div>
+</body>
+</html>
