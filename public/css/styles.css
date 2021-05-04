@@ -1,8 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;1,200&display=swap');
 body {
-    background: rgb(205,18,224);
-    background: linear-gradient(90deg, rgba(205,18,224,1) 0%, rgba(0,212,255,1) 85%);
+    background-color: lightblue;
     box-sizing: border-box;
 }
 
