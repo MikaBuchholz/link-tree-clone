@@ -39,17 +39,15 @@ button.onclick = async function () {
     if (requestedUsername == username) {
         const pText= `Name '${requestedUsername}' is in use ❌`
         usernameTag.innerText = pText
-        addButton.style.display = 'none'
-        linkInput.style.display = 'none'
-        saveButton.style.display = 'none'
+        clearScreen()
    } 
    if (username.length >= 3) {
         if (requestedUsername == 'NaN') {
-                const pText = `Name '${username}' is not in use ✔️`
-                usernameTag.innerText = pText
-                addButton.style.display = 'block'
-                linkInput.style.display = 'block'
-                saveButton.style.display = 'block'
+            const pText = `Name '${username}' is not in use ✔️`
+            usernameTag.innerText = pText
+            addButton.style.display = 'block'
+            linkInput.style.display = 'block'
+            saveButton.style.display = 'block'
 
     }
     } else {
@@ -75,6 +73,7 @@ async function checkIfURL () {
             globalThis.linkList = linkList
             linkInput.value = ''
             renderLinksNonIterative(linkList)
+            console.log(linkList)
         } 
     }
 }
@@ -85,7 +84,8 @@ function renderLinksNonIterative(linkList) {
 
     var newATag = document.createElement('a')
     newATag.setAttribute('class', 'link-a')
-    newATag.setAttribute('href', `https://${linkList[listIndexCounter]}`)
+    //newATag.setAttribute('href', `https://${linkList[listIndexCounter]}`)
+    //Removed because with clicking the container it removes it, both is no good
 
     var newPTag = document.createElement('p')
     newPTag.setAttribute('class', 'link-content')
@@ -94,9 +94,23 @@ function renderLinksNonIterative(linkList) {
     
     newATag.appendChild(newPTag)
     newDiv.appendChild(newATag)
+    //newDiv.appendChild(newPTag)
     linkContainer.appendChild(newDiv)
 
     listIndexCounter += 1
+
+    newDiv.onclick = async function() {
+        const selectedLink = newDiv.innerText
+        newDiv.remove()
+
+        for (var index = 0; index < linkList.length; index++) {
+            if (linkList[index] == selectedLink) {
+                linkList.splice(index, 1)
+                listIndexCounter -= 1
+                break
+            }
+        }
+    }
 }
 
 async function sendData () {
@@ -114,8 +128,28 @@ async function sendData () {
         }),
     })
         confirmTag.innerText = 'Saving succeded ✔️'
+        usernameTag.innerText = ''
+        clearScreen()
+        
+        
     } 
     catch {
         confirmTag.innerText = 'Saving failed ❌'
     }
+    
+}
+
+
+function clearScreen () {
+    const allDivs = document.querySelectorAll('.linked-list')
+        for (var index = 0; index < allDivs.length; index++) {
+            allDivs[index].remove()
+            globalThis.linkList = []
+        }
+
+    addButton.style.display = 'none'
+    linkInput.style.display = 'none'
+    saveButton.style.display = 'none'
+    statusTag.innerText = ''
+    usernameInput.value = ''
 }
