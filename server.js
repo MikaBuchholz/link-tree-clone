@@ -58,7 +58,7 @@ app.post('/save-user', (req, res) => {
   }
 })
 
-app.get('/user/:username', async (req, res) => {
+app.get('/:username', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/user.html'))   
 })
 
@@ -69,7 +69,7 @@ app.post('/user', async (req, res) => {
     }
     
     var username = req.body.username
-   
+
     var userData = await compiledUserSchema.find({username: username},   (err, data) => {
       if (err) {
         return '😠'
