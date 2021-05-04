@@ -98,7 +98,7 @@ function renderLinksNonIterative(linkList) {
     linkContainer.appendChild(newDiv)
 
     listIndexCounter += 1
-
+    console.log(linkList)
     newDiv.onclick = async function() {
         const selectedLink = newDiv.innerText
         newDiv.remove()
@@ -145,6 +145,7 @@ function clearScreen () {
         for (var index = 0; index < allDivs.length; index++) {
             allDivs[index].remove()
             globalThis.linkList = []
+            listIndexCounter = 0
         }
 
     addButton.style.display = 'none'
