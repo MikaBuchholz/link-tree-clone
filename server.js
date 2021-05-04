@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 5002;
 
 app.use(express.json())
 
-
 //removed password for commit
 mongoose.connect(process.env.url, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
@@ -51,7 +50,7 @@ app.get('/home', (req, res) => {
 app.post('/save-user', (req, res) => {
   var username = req.body.username
   var listedLinks = req.body.listedLinks
-  console.log('SEX')
+  
   if (username != undefined || !listedLinks != undefined) {
       console.log('User data is valid 😍')
       res.status(200).send({status: 'User saved'})
