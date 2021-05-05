@@ -2,10 +2,11 @@
 
 <section class = "link-container">
     {{#each listedLinks}}
-    <div class = "link-div">
-        <a class = "a-tag" href='https://{{this}}'>
+    <a class = "a-tag" href='https://{{this}}'>
+        <div class = "link-div">
             <p class = "name-tag">{{this}}</p>
-        </a>
-    </div>
+        </div>
+    </a>
+    
     {{/each}}
 </section>
