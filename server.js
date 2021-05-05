@@ -85,7 +85,6 @@ app.get('/:username', async (req, res) => {
 })
 
 app.post('/user', async (req, res) => {
- 
     if (!req.body) {
       return 'No body 🤦‍♂️'
     }
