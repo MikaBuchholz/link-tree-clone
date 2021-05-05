@@ -141,7 +141,6 @@ async function sendData () {
     }
 }
 
-
 function clearScreen () {
     const allDivs = document.querySelectorAll('.linked-list')
         for (var index = 0; index < allDivs.length; index++) {
