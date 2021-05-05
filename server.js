@@ -2,12 +2,15 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
+const handlebar = require('express-handlebars')
 const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 5002;
 
+app.engine('handlebars', handlebar())
+app.set('view engine', 'handlebars')
 app.use(express.json())
 
 //removed password for commit
@@ -37,6 +40,18 @@ function saveUser (username, listedLinks) {
   })
 }
 
+
+async function findUser (username) {
+  var userData = await compiledUserSchema.find({username: username},   (err, data) => {
+    if (err) {
+      return '😠'
+        } 
+    })
+  return userData
+}
+
+
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
@@ -58,8 +73,15 @@ app.post('/save-user', (req, res) => {
   }
 })
 
-app.get('/:username', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/user.html'))   
+app.get('/:username', async (req, res) => {
+  try {
+      var username = req.params.username
+      var userData = await findUser(username)
+      var links = userData[0].listedLinks
+      res.render('user', {username: username, listedLinks: links})  
+  } catch {
+      res.sendFile(path.join(__dirname, 'public/error.html'))
+  }
 })
 
 app.post('/user', async (req, res) => {
@@ -69,18 +91,15 @@ app.post('/user', async (req, res) => {
     }
     
     var username = req.body.username
-
-    var userData = await compiledUserSchema.find({username: username},   (err, data) => {
-      if (err) {
-        return '😠'
-          } 
-      })
-      try {
+    
+    var userData = findUser(username)
+  
+    try {
       var links = userData[0].listedLinks
-        res.status(200).send({username: username, listedLinks: links}) 
-      } catch {
-        res.send({username: 'NaN', listedLinks: 'NaN'})
-      }
+      res.status(200).send({username: username, listedLinks: links}) 
+    } catch {
+      res.send({username: 'NaN', listedLinks: 'NaN'})
+    }
 })
 
 app.listen(PORT, () => {
