@@ -35,7 +35,7 @@ button.onclick = async function () {
     const data = await request.json()
     const requestedUsername = data.username
     const requestedListedLinks = data.listedLinks
-  
+    
     if (requestedUsername == username) {
         const pText= `Name '${requestedUsername}' is in use ❌`
         usernameTag.innerText = pText
