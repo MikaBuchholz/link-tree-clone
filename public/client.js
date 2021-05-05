@@ -116,27 +116,29 @@ function renderLinksNonIterative(linkList) {
 async function sendData () {
     const username = usernameInput.value
     
-    try {
-    const request = await fetch('http://localhost:5002/save-user', 
-        {method: 'Post',
-        headers: {
-            'Content-Type': 'application/json'
-                },
-        body: JSON.stringify({
-            'username': username,
-            'listedLinks': linkList 
-        }),
-    })
-        confirmTag.innerText = 'Saving succeded ✔️'
-        usernameTag.innerText = ''
-        clearScreen()
-        
-        
-    } 
-    catch {
-        confirmTag.innerText = 'Saving failed ❌'
+    if (linkList.length !== 0) {
+        try {
+            const request = await fetch('http://localhost:5002/save-user', 
+                {method: 'Post',
+                headers: {
+                    'Content-Type': 'application/json'
+                        },
+                body: JSON.stringify({
+                    'username': username,
+                    'listedLinks': linkList 
+                }),
+            })
+                confirmTag.innerText = 'Saving succeded ✔️'
+                usernameTag.innerText = ''
+                clearScreen()
+            } 
+        catch {
+            confirmTag.innerText = 'Saving failed ❌'
+        } 
+
+        } else {
+            confirmTag.innerText = 'Saving failed (No links) ❌'
     }
-    
 }
 
 
