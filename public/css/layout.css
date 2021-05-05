@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;1,200&display=swap');
 
-
 .title {
     display: flex;
     justify-content: center;
@@ -11,7 +10,6 @@ body {
     background-color: #7CB9E8;
     box-sizing: border-box;
 }
-
 
 p {
     display: flex;
