@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;1,200&display=swap');
+
+
+.title {
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+}
+
+body {
+    background-color: #7CB9E8;
+    box-sizing: border-box;
+}
+
+
+p {
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    font-family: 'IBM Plex Mono', monospace;
+} 
+
+.a-tag {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.4em;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.2em;
+}
+
+.link-container {
+    gap: 0.2rem;
+    border: black;
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    justify-content: center;
+    height: 70%;
+    margin: auto;
+    margin-top: 10em;
+}
+
+.link-div {
+    background-color: lightcoral;
+    border-radius: 15px;
+    font-size: 0.7em;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.link-div:hover {
+    background-color: rgb(185, 76, 76);
+}
+
+
+.home-tag-a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+.home-button-div {
+    margin-top: 30em;
+    background-color: lightcoral;
+    border-radius: 15px;
+    font-size: 0.7em;
+    padding: 10px;
+    width: 5%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;   
+}
+
+.home-button-div:hover {
+    background-color: rgb(185, 76, 76);
+}
