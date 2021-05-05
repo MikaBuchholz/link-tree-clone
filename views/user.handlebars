@@ -1,0 +1,13 @@
+
+
+<p>User page for {{username}}</p>
+
+<section class = "link-container">
+    {{#each listedLinks}}
+    <div class = "link-div">
+        <a class = "a-tag" href='https://{{this}}'>
+            <p class = "name-tag">{{this}}</p>
+        </a>
+    </div>
+    {{/each}}
+</section>
