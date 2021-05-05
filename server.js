@@ -87,9 +87,8 @@ app.post('/user', async (req, res) => {
     }
     
     var username = req.body.username
-    
-    var userData = findUser(username)
-  
+   
+    var userData = await findUser(username)
     try {
       var links = userData[0].listedLinks
       res.status(200).send({username: username, listedLinks: links}) 
