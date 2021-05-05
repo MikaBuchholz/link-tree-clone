@@ -40,7 +40,6 @@ function saveUser (username, listedLinks) {
   })
 }
 
-
 async function findUser (username) {
   var userData = await compiledUserSchema.find({username: username},   (err, data) => {
     if (err) {
@@ -49,8 +48,6 @@ async function findUser (username) {
     })
   return userData
 }
-
-
 
 app.use(express.static(path.join(__dirname, 'public')))
 
