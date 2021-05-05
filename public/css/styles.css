@@ -59,12 +59,17 @@ body {
 
 .add-button:hover {
     background-color: rgb(245, 98, 98);
-    color:black;
+    border-color: rgb(245, 98, 98);
 }
 
 .use-button:hover {
     background-color: rgb(245, 98, 98);
-    color:black;
+    border-color: rgb(245, 98, 98);
+}
+
+.save-button:hover {
+    background-color: rgb(245, 98, 98);
+    border-color: rgb(245, 98, 98);
 }
 
 .display-name {
